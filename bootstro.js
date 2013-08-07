@@ -62,7 +62,7 @@ $(document).ready(function(){
             var $el = get_element(i);
             var nextButton, prevButton, finishButton;
             
-            content = content + "<div class='bootstro-nav-wrapper'>";
+            content = content + "<div class='bootstro-nav-wrapper'><div class='btn-group'>";
             if ($el.attr('data-bootstro-nextButton'))
             {
                 nextButton = $el.attr('data-bootstro-nextButton');
@@ -119,11 +119,11 @@ $(document).ready(function(){
                 else if (i == count -1 )
                     content = content + prevButton;
                 else 
-                    content = content + nextButton + prevButton
+                    content = content + prevButton + nextButton;
             }
             content = content + '</div>';
               
-            content = content +'<div class="bootstro-finish-btn-wrapper">' + finishButton + '</div>';
+            content = content +'<div class="bootstro-finish-btn-wrapper pull-right">' + finishButton + '</div></div>';
             return content;
         }
         
@@ -169,16 +169,7 @@ $(document).ready(function(){
             var p = {};
             var $el = get_element(i);
             //p.selector = selector;
-            var t = '';
-            if (count > 1)
-            {
-                t = "<span class='label label-success'>" + (i +1)  + "/" + count + "</span>";
-            }
             p.title = $el.attr('data-bootstro-title') || '';
-            if (p.title != '' && t != '')
-                p.title = t + ' - ' + p.title;
-            else if (p.title == '') 
-                p.title = t;
 
             p.content = $el.attr('data-bootstro-content') || '';
             p.content = add_nav_btn(p.content, i);
